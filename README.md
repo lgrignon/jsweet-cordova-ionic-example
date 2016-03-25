@@ -15,7 +15,7 @@ The following steps require administrator rights
 
 Compile JSweet using
 ```
-mvn clean generate-source
+mvn clean generate-sources
 ```
 
 JavaScript files are generated in `www/js/app/`, check that they are up to date

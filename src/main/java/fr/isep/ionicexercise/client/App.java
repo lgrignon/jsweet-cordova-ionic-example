@@ -1,6 +1,7 @@
 package fr.isep.ionicexercise.client;
 
 import static def.angularjs.Globals.angular;
+import static def.jquery.Globals.$;
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
 import static jsweet.dom.Globals.window;
@@ -21,7 +22,7 @@ public class App {
 
 	private Cordova cordova;
 	private String platformId;
-	private Server server;
+	public Server server;
 
 	public void initialize() {
 		cordova = (Cordova) window.$get("cordova");
@@ -33,7 +34,10 @@ public class App {
 		server.setPingPath(null);
 		server.addPersistentHeader("Content-Type", "application/json");
 
-		initializeIonic();
+		$(document).ready(() -> {
+			initializeIonic();
+			return null;
+		});
 	}
 
 	private void initializeIonic() {
@@ -51,7 +55,9 @@ public class App {
 					templateUrl = union("templates/menu.html");
 					controller = union("MenuController");
 				}
-			}).state("app.coffeeshops", new IState() {
+			});
+			
+			$stateProvider.state("app.coffeeshops", new IState() {
 				{
 					url = union("/coffeeshops");
 					views = new Views() {

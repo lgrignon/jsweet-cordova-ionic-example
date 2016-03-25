@@ -6,16 +6,17 @@
 	<ion-content class="has-header">
 
 		<ion-list>
-			<a ng-repeat="shop in coffeeshops" class="item item-thumbnail-left" ng-href="#/">
+			<a ng-repeat="shop in coffeeshops" class="item item-thumbnail-left">
 				<img src="http://lorempixel.com/g/64/64/?{{care.id}}">
 				<h2>{{shop.name}}</h2>
 				<p>{{shop.address}}</p>
 			</a>
 		</ion-list>
 		
-		<button class="button button-stable" ng-click="">
+		<button class="button button-block button-positive">
 			Ajouter
 		</button>
 	</ion-content>
 		
 </ion-view>
+

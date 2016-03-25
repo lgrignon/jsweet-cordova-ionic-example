@@ -1,0 +1,21 @@
+<ion-view title="Coffee shops">
+		<ion-nav-buttons side="left">
+			<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+		</ion-nav-buttons>
+
+	<ion-content class="has-header">
+
+		<ion-list>
+			<a ng-repeat="shop in coffeeshops" class="item item-thumbnail-left" ng-href="#/">
+				<img src="http://lorempixel.com/g/64/64/?{{care.id}}">
+				<h2>{{shop.name}}</h2>
+				<p>{{shop.address}}</p>
+			</a>
+		</ion-list>
+		
+		<button class="button button-stable" ng-click="">
+			Ajouter
+		</button>
+	</ion-content>
+		
+</ion-view>

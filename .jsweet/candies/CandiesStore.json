@@ -1,0 +1,109 @@
+{
+  "candies": [
+    {
+      "name": "es6-promise",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1458856964000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "jsweet-core",
+      "version": "1.1.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1458856904000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "es6-promises",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457337296000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "underscore",
+      "version": "1.7.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457338120000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cryptojs",
+      "version": "3.1.2-SNAPSHOT",
+      "lastUpdateTimestamp": 1457356534000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cordova",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457352284000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "ionic",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457363950000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "jquery",
+      "version": "1.10.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457336798000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cordova-ionic",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1455346394000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cordova-ionic--plugins-keyboard",
+      "version": "0.1.2-SNAPSHOT",
+      "lastUpdateTimestamp": 1457351436000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cordova--plugins-Camera",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457338832000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "cordova--plugins-FileSystem",
+      "version": "0.0.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457340300000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "angular",
+      "version": "1.4.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457337236000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "angular-ui-router",
+      "version": "1.1.5-SNAPSHOT",
+      "lastUpdateTimestamp": 1457353234000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    },
+    {
+      "name": "angular-translate",
+      "version": "2.4.0-SNAPSHOT",
+      "lastUpdateTimestamp": 1457352758000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "1.1.0"
+    }
+  ]
+}

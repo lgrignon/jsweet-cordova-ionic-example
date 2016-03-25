@@ -1,0 +1,27 @@
+/* Empty. Add your own CSS if you like */
+ 
+.error {
+  padding: 5px 8px;
+  font-size: 1em;
+  color: #555;
+  vertical-align: middle;
+  font-style: italic;
+}
+ 
+.error i {
+  font-size: 1.2em;
+  color: #B83E2C;  
+  vertical-align: middle;
+}
+ 
+.last-error-container > .error {
+  padding: 5px 8px 0;
+}
+ 
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+ 
+.no-errors {
+  border-bottom: 3px solid green;
+}

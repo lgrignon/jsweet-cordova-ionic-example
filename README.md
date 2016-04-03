@@ -1,4 +1,4 @@
-# Ionic exercise: rate your coffee shops
+# Ionic exercise: rate your coffee shops [CLIENT]
 
 ## Pre-requisits
 

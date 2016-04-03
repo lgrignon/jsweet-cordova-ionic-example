@@ -2,6 +2,8 @@ package org.jsweet.ionicexercise.client;
 
 import static jsweet.dom.Globals.console;
 
+import org.jsweet.ionicexercise.client.model.CoffeeShopDto;
+
 import def.angular_ui_router.ng.ui.IStateService;
 import def.angularjs.ng.IScope;
 import def.ionic.ionic.popup.IonicPopupService;

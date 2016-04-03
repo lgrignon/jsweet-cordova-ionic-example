@@ -1,4 +1,4 @@
-package org.jsweet.ionicexercise.client;
+package org.jsweet.ionicexercise.client.model;
 
 public class RateCoffeeShopParameters {
 	

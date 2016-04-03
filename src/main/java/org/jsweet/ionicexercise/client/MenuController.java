@@ -1,4 +1,4 @@
-package fr.isep.ionicexercise.client;
+package org.jsweet.ionicexercise.client;
 
 import def.angularjs.ng.IScope;
 

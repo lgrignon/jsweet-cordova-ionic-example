@@ -1,4 +1,4 @@
-package fr.isep.ionicexercise.client;
+package org.jsweet.ionicexercise.client;
 
 import static def.jquery.Globals.$;
 import static def.underscore.Globals._;

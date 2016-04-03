@@ -25,12 +25,12 @@ class CoffeeShopListController extends AbstractController {
 		super($state, $ionicPopup);
 		this.$scope = $scope;
 
-			console.log("get coffee shops");
-			server.<Array<CoffeeShopDto>>get("/coffeeshop/list", null, (Array<CoffeeShopDto> coffeeShops) -> {
-				$scope.coffeeshops = coffeeShops;
-				
-				updateUI($scope);
-			});
+		console.log("get coffee shops");
+		server.<Array<CoffeeShopDto>> get("/coffeeshop/list", null, (Array<CoffeeShopDto> coffeeShops) -> {
+			$scope.coffeeshops = coffeeShops;
+
+			updateUI($scope);
+		});
 	}
 
 }

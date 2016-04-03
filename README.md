@@ -1,10 +1,9 @@
 # Ionic exercise: rate your coffee shops [CLIENT]
 
+This exercise shows a basic JSweet + ionic example which communicates with a (JAX-RS server api)[https://github.com/lgrignon/ionic-exercise-server]
+
 ## Pre-requisits
 
-The following steps require administrator rights
-
-* Download better command line: [Cmder](https://github.com/cmderdev/cmder/releases/download/v1.2.9/cmder_mini.zip) (Official website: http://cmder.net)
 * Ensure java version is 8 using `java -version`
 * Ensure maven command line (mvn) is in PATH by typing `mvn -version`, if command not found, download apache maven 3.3.x and include its bin folder in PATH, then try again
 * Ensure node packet manager (npm) is in PATH by typing `npm -v`, if command not found, download and install NodeJS, then try again

@@ -1,6 +1,6 @@
 # Ionic exercise: rate your coffee shops [CLIENT]
 
-This exercise shows a basic JSweet + ionic example which communicates with a (JAX-RS server api)[https://github.com/lgrignon/ionic-exercise-server]
+This exercise shows a basic JSweet + Ionic + Cordova example which communicates with a [JAX-RS server api](https://github.com/lgrignon/jsweet-jaxrs-server)
 
 ## Pre-requisits
 
@@ -39,7 +39,14 @@ $scope.onAddClicked = () -> {
 ### 4. Add a create coffee shop view and its controller in App's ionic configuration, with the routing
 ### 5. Creates the html file corresponding to your view
 Copy the coffee shop list file and replace view content with a form using inline labels (see [ionic components](http://ionicframework.com/docs/components/#forms-inline-labels))
+Post to the following server's api method to create your coffee shop:
+server.post("/coffeeshop/add", $map("name", "test", "address", "test")) // example to add a coffee shop named "test", at address "test address"
+
 ### 6. Save the coffee shop with an add button 
 Use a runnable which respond to click and call the server using this.server 
- 
 
+### 7. Add a view coffee shop detail view, accessible by clicking on a coffee shop item in the main coffee shop list
+Access the coffee shop details through server.get("/coffeeshop/getDetails", { id: '1' }, details -> { /* ... */ console.log(details); })
+
+### 8. Add, on the detail consultation view, a rate button, using the following api's method:
+server.post("/coffeeshop/rate", $map("id", 1, "rate", 4)) // example to rate coffee shop at id 1 with a 4 grade

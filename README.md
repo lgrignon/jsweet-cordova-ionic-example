@@ -1,6 +1,6 @@
 # Ionic exercise: rate your coffee shops [CLIENT]
 
-This exercise shows a basic JSweet + Ionic + Cordova example which communicates with a [JAX-RS server api](https://github.com/lgrignon/jsweet-jaxrs-server)
+This exercise shows a basic JSweet + Ionic + Cordova example which communicates with a [JAX-RS server api](https://github.com/lgrignon/jsweet-jaxrs-server-example)
 
 ## Pre-requisits
 

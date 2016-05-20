@@ -3,25 +3,17 @@ package org.jsweet.ionicexercise.client;
 import static def.jquery.Globals.$;
 import static def.underscore.Globals._;
 import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.setInterval;
-import static jsweet.dom.Globals.window;
 import static jsweet.lang.Globals.parseInt;
-import static jsweet.util.Globals.$get;
 import static jsweet.util.Globals.array;
-import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.object;
 import static jsweet.util.Globals.string;
 import static jsweet.util.Globals.union;
 
 import java.util.function.Consumer;
 
-import def.es6_promise.Promise;
-import def.es6_promise.Promise.CallbackBiConsumer;
 import def.underscore._.Dictionary;
-import jsweet.dom.Blob;
 import jsweet.dom.Event;
 import jsweet.dom.FormData;
-import jsweet.dom.ProgressEvent;
 import jsweet.dom.XMLHttpRequest;
 import jsweet.lang.Array;
 import jsweet.lang.Error;
@@ -58,39 +50,18 @@ abstract class AjaxResponse<T> {
 
 public class Server {
 
-	private boolean online;
-
 	private String webRoot = "";
-	private String pingPath = null;
 
-	private Array<Consumer<Boolean>> connectivityListeners = new Array<>();
 	private jsweet.lang.Object persistentHeaders = new jsweet.lang.Object();
 	private Array<Consumer<Object>> requestParametersInterceptor = new Array<>();
 
 	private boolean requestedWithHeaderDisabled;
 
 	Server() {
-		this.online = false;
-
-		this.checkServer();
-		setInterval(function(() -> {
-			this.checkServer();
-		}), 5000);
-	}
-
-	@SuppressWarnings("unchecked")
-	private Server addRequestParametersInterceptor(Consumer<Object> interceptor) {
-		this.requestParametersInterceptor.push(interceptor);
-		return this;
 	}
 
 	public Server addPersistentHeader(String name, String value) {
 		this.persistentHeaders.$set(name, value);
-		return this;
-	}
-
-	private Server removePersistentHeader(String name) {
-		this.persistentHeaders.$delete(name);
 		return this;
 	}
 
@@ -121,11 +92,6 @@ public class Server {
 		return url;
 	}
 
-	public boolean isOnline() {
-
-		return this.online;
-	}
-
 	public <T> void get(String path, jsweet.lang.Object parameters, Consumer<T> onSuccess) {
 
 		String url = this.getUrl(path, null);
@@ -138,7 +104,7 @@ public class Server {
 			url = setQueryStringParam(url, key, object(data).$get(key));
 		}
 
-		this.doRequest("GET", url,  null, onSuccess);
+		this.doRequest("GET", url, null, onSuccess);
 	}
 
 	public <T> void post(String path, Object parameter, Consumer<T> onSuccess) {
@@ -214,9 +180,7 @@ public class Server {
 
 	private <T> void installXMLHttpRequestListeners(XMLHttpRequest xhr, Consumer<T> resolve, Consumer<Object> reject) {
 		xhr.onload = (Event ev) -> {
-			// TODO bug
-			// onXMLHttpRequestComplete(xhr, resolve, reject); bug
-			this.<T> onXMLHttpRequestComplete(xhr, resolve, reject);
+			onXMLHttpRequestComplete(xhr, resolve, reject);
 
 			return null;
 		};
@@ -226,72 +190,12 @@ public class Server {
 		};
 	}
 
-	@SuppressWarnings("unchecked")
-	public Server addConnectivityListener(Consumer<Boolean> listener) {
-		this.connectivityListeners.push(listener);
-		return this;
-	}
-
 	private void invokeRequestParametersInterceptors(Object data) {
 		_.each(array(this.requestParametersInterceptor), (interceptor, idx, __) -> {
 			interceptor.accept(data);
 
 			return null;
 		});
-	}
-
-	public Server setPingPath(String path) {
-		this.pingPath = path;
-		this.checkServer();
-		return this;
-	}
-
-	public boolean isPingEnabled() {
-		return this.pingPath != null;
-	}
-
-	private void checkServer() {
-		if (!this.isPingEnabled()) {
-			return;
-		}
-
-		XMLHttpRequest req = new XMLHttpRequest();
-		req.open("GET", this.webRoot + this.pingPath, true);
-		req.onload = (event) -> {
-			if (req.status == 200) {
-				this.setConnectivity(true);
-			} else {
-				this.setConnectivity(false);
-			}
-
-			return null;
-		};
-		req.onerror = e -> {
-			console.error(e);
-			this.setConnectivity(false);
-
-			return null;
-		};
-
-		try {
-			req.send();
-		} catch (Error e) {
-			if (e.name == "NetworkError") {
-				this.setConnectivity(false);
-			} else {
-				throw e;
-			}
-		}
-	}
-
-	private void setConnectivity(boolean online) {
-		if (online != this.online) {
-			console.info("online state changed: " + this.online + " => " + online);
-			this.online = online;
-			this.connectivityListeners.forEach((listener) -> {
-				listener.accept(online);
-			});
-		}
 	}
 
 	private static Server theInstance = new Server();
@@ -308,8 +212,6 @@ public class Server {
 		if (options.statusCode != 200) {
 			console.warn("ajax request error (text response): " + options.response);
 			options.onError.accept(union(options.response));
-			// TODO
-			// Notifications.error(label('label.serverError'));
 		} else {
 			options.onSuccess.accept(union(options.response));
 		}
@@ -363,16 +265,6 @@ public class Server {
 
 		// Invalid access
 		if (options.statusCode == 401) {
-			// if ($.isFunction(settings.onUnauthorized)) {
-			// settings.onUnauthorized(document.location.pathname +
-			// document.location.search);
-			// return;
-			// }
-			// document.location.href = url("rui", "login")
-			// + "?requestedUrl="
-			// + encodeURIComponent(document.location.pathname
-			// + document.location.search) + "&__notification="
-			// + label("msg.disconnectedPleaseLogIn");
 			options.onError.accept(string("unauthorized"));
 			return;
 		}
@@ -380,10 +272,8 @@ public class Server {
 		try {
 			if (options.contentType != null && options.contentType != "application/json"
 					&& options.contentType != "text/x-json") {
-				// TODO: fix bug to remove this
 				this.handleTextResponse(options);
 			} else {
-				// TODO: fix bug to remove this
 				this.handleJsonResponse(options);
 			}
 		} catch (Error e) {
@@ -436,9 +326,5 @@ public class Server {
 		};
 
 		this.onAjaxRequestComplete(responseInfos);
-	}
-
-	private void disableRequestedWithHeader() {
-		requestedWithHeaderDisabled = true;
 	}
 }

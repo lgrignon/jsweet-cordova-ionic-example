@@ -30,8 +30,8 @@ public class App {
 		console.log("initializing - cordova=" + cordova + " platformId=" + platformId);
 
 		server = Server.instance();
+//		server.setWebRoot("http://localhost:8080/ionic-exercise-server/api");
 		server.setWebRoot("http://jsweet.org/ionic-exercise-server/api");
-		server.setPingPath(null);
 		server.addPersistentHeader("Content-Type", "application/json");
 
 		$(document).ready(() -> {

@@ -1,4 +1,5 @@
 {
   "name": "ionic-exercise",
-  "app_id": ""
+  "app_id": "",
+  "defaultBrowser": "chrome"
 }

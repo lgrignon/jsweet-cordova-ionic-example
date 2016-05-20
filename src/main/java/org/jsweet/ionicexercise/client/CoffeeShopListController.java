@@ -16,14 +16,12 @@ abstract class CoffeeShopListViewModel extends IScope {
 }
 
 class CoffeeShopListController extends AbstractController {
-	private CoffeeShopListViewModel $scope;
 
 	CoffeeShopListController( //
 			CoffeeShopListViewModel $scope, //
 			IStateService $state, //
 			IonicPopupService $ionicPopup) {
 		super($state, $ionicPopup);
-		this.$scope = $scope;
 
 		console.log("get coffee shops");
 		server.<Array<CoffeeShopDto>> get("/coffeeshop/list", null, (Array<CoffeeShopDto> coffeeShops) -> {
